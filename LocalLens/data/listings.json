@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "note": "Real listings go in 'records'. This file is intentionally EMPTY: LocalLens has no verified or imported business data yet. See docs/DATA_AND_SOURCES.md for the record format and the import workflow.",
+  "records": []
+}

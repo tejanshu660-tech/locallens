@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LocalLens | Discover India. Find your vibe.</title>
+<meta name="description" content="LocalLens helps you discover cafes, restaurants, shopping, tourism, hidden gems, adventure and events in cities across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script defer src="data.js"></script>
+<script defer src="script.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="brand" href="#home" aria-label="LocalLens home"><span class="lens"></span>LocalLens</a>
+  <button class="chip locbtn" data-loc-open aria-label="Choose location">📍 <span data-loc-label>All India</span></button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <a href="#home">Home</a><a href="#explore">Explore</a><a href="#food">Food &amp; Cafes</a><a href="#restaurants">Restaurants</a><a href="#shopping">Shopping</a><a href="#tourism">Tourism</a><a href="#gems">Hidden Gems</a><a href="#adventure">Adventure</a><a href="#events">Events</a><a href="#about">About</a><a href="#contact" class="pill">Contact</a>
+  </nav>
+</header>
+
+<div id="dataBanner" class="banner" role="status" hidden></div>
+<main id="main">
+<section class="page" id="home">
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="kicker">Cities, states and union territories across India</p>
+      <h1>Discover India. Find your vibe.</h1>
+      <p class="lead">From street food lanes to mountain towns, find where India eats, shops, explores and hangs out. Start with your city.</p>
+      <form id="heroSearch" class="search" role="search">
+        <label class="sr" for="heroQ">Search places or cities</label>
+        <input id="heroQ" type="search" placeholder="Search a city, state or place">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div class="chips"><button class="chip locbtn" data-loc-open>📍 <span data-loc-label>All India</span> · change</button></div>
+      <div class="chips" id="heroChips"></div>
+    </div>
+    <div class="hero-art">
+      <div class="tile t1 photo" data-img="cafe" style="--h:24"><span class="pt"><b>Cafes</b><small>Coffee corners and rooftops</small></span></div>
+      <div class="tile t2 photo" data-img="hawa" style="--h:12"><span class="pt"><b>Heritage</b><small>Palaces, forts and old cities</small></span></div>
+      <div class="tile t3 photo" data-img="manali" style="--h:200"><span class="pt"><b>Mountains</b><small>Hill towns and high passes</small></span></div>
+    </div>
+  </div>
+  <p class="notice"><strong>Demo data:</strong> listings are clearly labelled samples. Only city, state and landmark names are real; descriptions, hours and prices are not verified. Trending picks are hand-chosen samples, not live data. Ratings and reviews come only from visitors in their own browser.</p>
+  <p class="status" id="dataStatus" aria-live="polite">Loading data status…</p>
+
+  <div class="wrap">
+    <div class="head"><h2>Browse by category</h2></div>
+    <div class="tiles four small" id="cats"></div>
+
+    <div class="head"><h2>Trending destinations</h2><span class="sample">Sample picks, not live data</span></div>
+    <div class="tiles three" id="trending"></div>
+
+    <div class="head"><h2>Eat &amp; drink</h2><span class="sample">Illustrative photos, sample listings</span></div>
+    <div class="tiles four" id="foodTiles"></div>
+
+    <div class="head"><h2>Travel &amp; hidden gems</h2></div>
+    <div class="tiles five" id="travelTiles"></div>
+
+    <div class="head"><h2>Shopping &amp; events</h2></div>
+    <div class="tiles two" id="spotTiles"></div>
+
+    <div class="head"><h2>Popular cities</h2><button class="link btnlink" data-loc-open>Browse all states and UTs</button></div>
+    <div class="citygrid" id="cities"></div>
+
+    <div class="head"><h2 id="featTitle">Featured places</h2><a class="link" href="#explore">See all places</a></div>
+    <div class="grid" id="featured"></div>
+
+    <div class="head"><h2>Pick a mood</h2></div>
+    <div class="moods" id="moods"></div>
+
+    <div class="head"><h2>Your saved places</h2></div>
+    <div class="grid" id="savedHome"></div>
+
+    <div class="band">
+      <h2>Run a place anywhere in India?</h2>
+      <p>Send us your cafe, shop, venue, tour or event and we will review it for the next update.</p>
+      <a class="btn light" href="#contact">Submit your business</a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="explore" data-scope="all" data-title="Explore places" data-intro="Everything in one place. Pick a location, then filter by category and budget."><div class="wrap"></div></section>
+<section class="page" id="food" data-scope="food" data-title="Food &amp; Cafes" data-intro="Coffee corners, bakeries and cafes."><div class="wrap"></div></section>
+<section class="page" id="restaurants" data-scope="restaurants" data-title="Restaurants" data-intro="From local meals to celebration dinners."><div class="wrap"></div></section>
+<section class="page" id="shopping" data-scope="shopping" data-title="Shopping" data-intro="Bazaars, malls and market lanes."><div class="wrap"></div></section>
+<section class="page" id="tourism" data-scope="tourism" data-title="Tourism" data-intro="Landmarks, heritage and viewpoints."><div class="wrap"></div></section>
+<section class="page" id="gems" data-scope="gems" data-title="Hidden Gems" data-intro="Quieter spots and local favourites."><div class="wrap"></div></section>
+<section class="page" id="adventure" data-scope="adventure" data-title="Adventure &amp; Activities" data-intro="Outdoor experiences, workshops and things to do with friends."><div class="wrap"></div></section>
+
+<section class="page" id="place"><div class="wrap" id="placeView"></div></section>
+
+<section class="page" id="events"><div class="wrap">
+  <h2 class="ptitle">Events</h2>
+  <p class="pintro">Sample event ideas for <strong data-loc-label>All India</strong>. Real dates and tickets will come from organisers once they submit events. <button class="link btnlink" data-loc-open>Change location</button></p>
+  <div class="grid" id="eventGrid"></div>
+</div></section>
+
+<section class="page" id="about"><div class="wrap narrow">
+  <h2 class="ptitle">About LocalLens</h2>
+  <p>LocalLens is a free local guide for India. We want people to find good places in any city faster, and local businesses to be found without paying for ads.</p>
+  <p>Right now the site runs on sample listings so you can try every feature. Nothing here is a verified review, address or endorsement. As real businesses submit and we check them, sample cards will be replaced.</p>
+  <h3>How it works</h3>
+  <ul class="plain"><li>Choose a state or city from the location button.</li><li>Search or filter by category and budget.</li><li>Open a place for details and a map search link.</li><li>Save favourites and leave ratings. They stay in your browser.</li></ul>
+  <h3>Data and sources</h3>
+  <p>LocalLens separates four kinds of records: <strong>Verified</strong> (checked by a person against a source, with a date), <strong>Imported</strong> (copied from a provider such as OpenStreetMap, not yet checked), <strong>Details unverified</strong> (a real landmark name only) and <strong>Demo</strong> (generated placeholders, not real businesses). At the moment there are no verified or imported business records. Map data, when imported from OpenStreetMap, is © OpenStreetMap contributors (ODbL). LocalLens does not scrape restaurant or map websites.</p>
+  <h3>Photo credits</h3><p>Photographs are from Unsplash photographers and used under the Unsplash License. Photos on listing cards are illustrative and do not show the actual business.</p><ul class="plain" id="credits"></ul>
+</div></section>
+
+<section class="page" id="contact"><div class="wrap two">
+  <div>
+    <h2 class="ptitle">Submit your business</h2>
+    <p class="pintro">Tell us about your place. We review every submission before it goes live.</p>
+    <form class="form" data-form="business" name="business" method="POST" data-netlify="true" netlify-honeypot="bot">
+      <input type="hidden" name="form-name" value="business">
+      <p class="sr"><label>Leave empty <input name="bot"></label></p>
+      <label>Business name<input name="name" required maxlength="80"></label>
+      <label>Category<select name="category" required><option value="">Choose one</option><option>Food &amp; Cafes</option><option>Restaurant</option><option>Shopping</option><option>Tourism</option><option>Hidden Gem</option><option>Adventure</option><option>Activity</option><option>Hotel or stay</option><option>Event</option></select></label>
+      <label>State or union territory<select name="state" id="formState" required><option value="">Choose one</option></select></label>
+      <label>City<input name="city" list="cityList" required maxlength="60" placeholder="Start typing your city"></label><datalist id="cityList"></datalist>
+      <label>Full address<input name="address" maxlength="160"></label>
+      <label>Area or neighbourhood<input name="area" maxlength="60"></label>
+      <label>Phone (optional)<input name="phone" type="tel" maxlength="20"></label>
+      <label>Website (optional)<input name="website" type="url" placeholder="https://"></label>
+      <label>Budget<select name="budget"><option>Under ₹300 per person</option><option>₹300 to ₹800</option><option>Over ₹800</option></select></label>
+      <label>Short description<textarea name="desc" rows="4" required maxlength="400"></textarea></label>
+      <label>Contact email<input type="email" name="email" required></label>
+      <button class="btn" type="submit">Submit business</button>
+    </form>
+  </div>
+  <div>
+    <h2 class="ptitle">Contact us</h2>
+    <p class="pintro">Questions, corrections or ideas? Send a note.</p>
+    <form class="form" data-form="contact" name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <label>Your name<input name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn dark" type="submit">Send message</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer class="foot">
+  <div><strong>LocalLens</strong><br>Discover India. Find your vibe.</div>
+  <div>Sample data for demonstration. Not affiliated with any listed place. Photography via <a href="https://unsplash.com">Unsplash</a>.<span id="osmCredit" hidden> Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>.</span></div>
+</footer>
+
+<dialog id="locModal" aria-labelledby="locTitle"><div class="m-in">
+  <div class="lochead"><h2 id="locTitle">Choose your location</h2><button class="x2" data-lclose>Close</button></div>
+  <label class="sr" for="locQ">Search states, union territories and cities</label>
+  <input id="locQ" type="search" class="locq" placeholder="Search states or cities" autocomplete="off">
+  <div id="locList"></div>
+</div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
